@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const xss = require('xss')
 const Treeize = require('treeize')
 
