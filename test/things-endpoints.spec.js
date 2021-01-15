@@ -142,7 +142,7 @@ protectedEndpoints.forEach(endpoint => {
   describe(`GET /api/things/:thing_id`, () => {
     context(`Given no things`, () => {
       beforeEach(()=>
-        db.into('thingful_users').insert(testUsers)
+        helpers.seedUsers(db, testUsers)
       )
       it(`responds with 404`, () => {
         const thingId = 123456
@@ -209,7 +209,7 @@ protectedEndpoints.forEach(endpoint => {
   describe(`GET /api/things/:thing_id/reviews`, () => {
     context(`Given no things`, () => {
       beforeEach(()=>
-      db.into('thingful_users').insert(testUsers)
+      helpers.seedUsers(db, testUsers)
     )
       it(`responds with 404`, () => {
         const thingId = 123456

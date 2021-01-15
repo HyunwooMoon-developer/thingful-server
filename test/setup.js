@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 process.env.TZ = 'UTC'
 process.env.NODE_ENV = 'test'
 
