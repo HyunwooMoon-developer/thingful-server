@@ -1,10 +1,11 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 const knex = require('knex')
 const supertest = require('supertest')
 const app = require('../src/app')
 const helpers = require('./test-helpers')
 
-describe('Reviews Endpoints', function() {
+describe.only('Reviews Endpoints', function() {
   let db
 
   const {
@@ -34,14 +35,6 @@ describe('Reviews Endpoints', function() {
         testThings,
       )
     )
-
-      it(`Responds 401 'Unauthorized Request' when invalid password` , ()=>{
-        const userInvalidPass = {user_name : testUsers[0].user_name, password: 'wrong'}
-        return supertest(app)
-              .post('/api/reviews')
-              .set('Authorization', helpers.makeAuthHeader(userInvalidPass))
-              .expect(401, {error : `Unauthorized Request`})
-      })
 
     it(`creates an review, responding with 201 and the new review`, function() {
       this.retries(3)
@@ -90,7 +83,7 @@ describe('Reviews Endpoints', function() {
 
     requiredFields.forEach(field => {
       const testThing = testThings[0]
-     // const testUser = testUsers[0]
+      const testUser = testUsers[0]
       const newReview = {
         text: 'Test new review',
         rating: 3,

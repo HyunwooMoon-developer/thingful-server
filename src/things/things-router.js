@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 const express = require('express')
-const { requireAuth } = require('../middleware/basic-auth')
+const { requireAuth } = require('../middleware/jwt-auth')
 const ThingsService = require('./things-service')
 
 const thingsRouter = express.Router()

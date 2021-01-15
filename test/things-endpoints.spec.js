@@ -38,46 +38,7 @@ describe('Things Endpoints', function() {
     )
   )
 
-      const protectedEndpoints = [
-        {
-          name : 'GET /api/things/:things_id',
-          path : '/api/things/1'
-        },
-        {
-          name : 'GET /api/things/:things_id/reviews',
-          path : '/api/things/1/reviews'
-        }
-      ]
-protectedEndpoints.forEach(endpoint => {
-  describe(endpoint.name, ()=> {
-    it(`responds with 401 'Missing basic token' when no basic token` , ()=> {
-      return supertest(app)
-            .get(endpoint.path)
-            .expect(401, {error : `Missing basic token`})
-    })
-    it(`Responds 401 'Unauthorized Request' when no credentials in token` , () => {
-        const userNoCreds = {user_name : '', password : ''}
-        return supertest(app)
-              .get(endpoint.path)
-              .set('Authorization', helpers.makeAuthHeader(userNoCreds))
-              .expect(401, {error : `Unauthorized Request`}) 
-    })
-    it(`Responds 401 'Unauthorized Request' when invalid user`, ()=>{
-      const userInvalidCreds = {user_name: 'user-note' , password : 'existy'}
-      return supertest(app)
-            .get(endpoint.path)
-            .set('Authorization' , helpers.makeAuthHeader(userInvalidCreds))
-            .expect(401, {error: `Unauthorized Request`})
-    })
-    it(`Responds 401 'Unauthorized Request' when invalid password` , ()=> {
-      const userInvalidPass = {user_name : testUsers[0].user_name, password : 'wrong' }
-      return supertest(app)
-            .get(endpoint.path)
-            .set('Authorization' , helpers.makeAuthHeader(userInvalidPass))
-            .expect(401, {error : `Unauthorized Request`})
-    })
-  })
-})
+     
 })
   describe(`GET /api/things`, () => {
     context(`Given no things`, () => {
