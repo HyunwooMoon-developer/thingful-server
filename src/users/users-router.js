@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 const express = require('express');
 const path = require('path');
-const { hashPassword } = require('./users-service');
 const UsersService = require('./users-service');
 
 const usersRouter = express.Router();
