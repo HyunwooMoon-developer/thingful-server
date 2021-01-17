@@ -4,7 +4,7 @@ const supertest = require('supertest');
 const app =require('../src/app');
 const helpers = require('./test-helpers');
 
-describe.only('Protected Endpoints', ()=> {
+describe('Protected Endpoints', ()=> {
     let db;
 
     const{
